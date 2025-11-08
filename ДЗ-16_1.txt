@@ -15,19 +15,16 @@ class Program
         Console.WriteLine($"Делитель: {divisor}");
 
         int count = 0;
+        int currentCheck = 0;
 
         for (int number = StartRange; number <= EndRange; number++)
         {
-            int remainder = number;
-
-            while (remainder >= divisor)
-            {
-                remainder -= divisor;
-            }
-
-            if (remainder == 0)
+            currentCheck += divisor;
+            
+            if (currentCheck == number)
             {
                 count++;
+                currentCheck = 0;
             }
         }
 
