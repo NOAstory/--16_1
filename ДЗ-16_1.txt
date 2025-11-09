@@ -15,17 +15,23 @@ class Program
         Console.WriteLine($"Делитель: {divisor}");
 
         int count = 0;
-        int currentCheck = 0;
 
-        for (int number = StartRange; number <= EndRange; number++)
+        int firstMultiple = StartRange;
+        int remainderCheck = firstMultiple;
+
+        while (remainderCheck >= divisor)
         {
-            currentCheck += divisor;
-            
-            if (currentCheck == number)
-            {
-                count++;
-                currentCheck = 0;
-            }
+            remainderCheck -= divisor;
+        }
+
+        if (remainderCheck > 0)
+        {
+            firstMultiple += divisor - remainderCheck;
+        }
+
+        for (int number = firstMultiple; number <= EndRange; number += divisor)
+        {
+            count++;
         }
 
         Console.WriteLine($"Количество чисел от {StartRange} до {EndRange} кратных {divisor}: {count}");
